@@ -7,22 +7,13 @@ import asyncio
 
 import replicate
 from langchain.llms import Replicate
+from decouple import config
+
+
+REPLICATE_API_TOKEN = config('REPLICATE_API_TOKEN')
 
 
 async def showPedido():
-
-    # --- Verifica se o token da API está nos segredos ---
-    if 'REPLICATE_API_TOKEN' in st.secrets:
-        replicate_api = st.secrets['REPLICATE_API_TOKEN']
-    else:
-        # Se a chave não está nos segredos, define um valor padrão ou continua sem o token
-        replicate_api = None
-
-    # Essa parte será executada se você precisar do token em algum lugar do seu código
-    if replicate_api is None:
-        # Se você quiser fazer algo específico quando não há token, você pode gerenciar isso aqui
-        # Por exemplo, configurar uma lógica padrão ou deixar o aplicativo continuar sem mostrar nenhuma mensagem:
-        st.warning('Um token de API é necessário para determinados recursos.', icon='⚠️')
 
     system_prompt = f'''
     Você é o Chef Mantiqueira especialista em vendas online e conhece todos os tipos de carne e cortes, você também é formado como chef de cozinha e sabe instruir com excelência como preparar pratos e temperos. Faça a saudação ao cliente antes de iniciar o atendimento e se apresente.
