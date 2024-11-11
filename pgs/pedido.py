@@ -375,7 +375,7 @@ async def showPedido():
     # Inicializar o modelo da Replicate
     llm = Replicate(
         model="meta/meta-llama-3-70b-instruct",
-        api_token=replicate_api
+        api_token=REPLICATE_API_TOKEN
     )
 
     # Store LLM-generated responses
